@@ -20,7 +20,7 @@ Harjoitustyössä käytetään kolmea eri algoritmia:
 - Hirviön reitinhaun toteuttava algoritmi. Tähän käytetään Dijkstran algoritmia tai A*-algoritmia.
 
 - Hirviön liikkumisen mahdollistava algoritmi, joka toimii seuraavasti:
-    1. Tarkisteaan, ollaanko koordinaattien perusteella todella liikkumissolmun kuvaamalla tämänhetkisellä solmulla. Jos ei olla, ajetaan reitinhakualgoritmialgoritmi uudestaan. Tämä ristiriita voi johtua esimerkiksi virheellisesti suoritetusta hypystä, tai, mikäli peliä kehitetään pidemmälle, esimerkiksi jostain pelaajan toiminnasta.
+    1. Tarkistetaan, ollaanko koordinaattien perusteella todella liikkumissolmun kuvaamalla tämänhetkisellä solmulla. Jos ei olla, ajetaan reitinhakualgoritmi uudestaan. Tämä ristiriita voi johtua esimerkiksi virheellisesti suoritetusta hypystä, tai, mikäli peliä kehitetään pidemmälle, esimerkiksi jostain pelaajan toiminnasta.
     2. Otetaan suunnistusalgoritmista seuraava tavoitesolmu ja siihen johtava kaari. Otetaan talteen kaaren id sekä tavoitekaaren id.
     3. Tarkistetaan id:tä vastaava kaaren tyyppi liikkumisverkosta, sekä haetaan tavoitesolmun id:n mukainen koordinaatti liikkumisverkosta.
     4. Kaaren tyypin sekä tavoitesolmun koordinaatin perusteella muodostetaan liikkumisstrategia seuraavasti:
@@ -49,4 +49,18 @@ Varsinaisessa reitinhaussa syötteenä toimii pelaajan liikkuminen. Tasopalanen,
 
 ## Aika- ja tilavaativuudet
 
+Pelikentän analysointi: 
+Aikavaativuus O(n^2) n = solmujen lukumäärä
+Tilavaativuus O(n^2) n = solmujen lukumäärä
+
+Reitinhaku:
+Aikavaativuus: O(n^2) (Dijkstra) n = solmujen lukumäärä
+Tilavaativuus: O(n^2) (Dijkstra) n = solmujen lukumäärä
+
+Liikkumisstrategian valinta:
+Aikavaativuus: O(1) 
+Tilavaativuus: O(1)
+
 ## Harjoitustyön ydin
+
+Harjoitustyön ydin on erityisesti Pelikentän analysointi verkoksi sekä reitinhaku Dijkstran algoritmilla tai A*:lla. Tarvittaessa harjoitusyötä voi yksinkertaistaa esimerkiksi siten, että hyppiminen ei ole mahdollista hirviöille, ainoastaan tikkaiden kiipeäminen.
