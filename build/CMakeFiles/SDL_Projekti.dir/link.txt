@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SDL_Projekti.dir/src/main.cpp.o -o SDL_Projekti  -L/usr/lib/x86_64-linux-gnu  -lSDL2 
