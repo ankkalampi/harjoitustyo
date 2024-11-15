@@ -64,11 +64,11 @@ std::vector<Square> generateSquares(int number){
     int dymin = -15;
     int dymax = 15;
 
-    int minwid = 2;
-    int maxwid = 5;
+    int minwid = 100;
+    int maxwid = 500;
 
-    int minhei = 2;
-    int maxhei = 5;
+    int minhei = 1;
+    int maxhei = 20;
 
     std::uniform_int_distribution<int> colordistrib(colormin, colormax);
     std::uniform_int_distribution<int> xdistrib(xmin, xmax);
@@ -141,7 +141,7 @@ int main() {
 
     // luodaan neliöitä
     
-    std::vector<Square> squares = generateSquares(5000);
+    std::vector<Square> squares = generateSquares(100000);
 
 
     
