@@ -1,4 +1,4 @@
-# Reitinhaku kaksiulotteiseen tasohyppelypeliin - Määrittelydokumentti
+# Virtuaalisen eläinpopulaation evoluution simulointi neuroverkoilla ja geneettisellä algoritmilla - Määrittelydokumentti
 
 ## Ohjelmointikielet
 
