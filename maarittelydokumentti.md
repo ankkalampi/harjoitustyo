@@ -2,65 +2,34 @@
 
 ## Ohjelmointikielet
 
-Harjoitus toteutetaan Pythonilla. Pythonin lisäksi osaan jonkin verran myös C:tä sekä C++:aa.
+Harjoitustyö toteutetaan C++:lla. Lisäksi osaan jossain määrin C:tä, C#:ia sekä Pythonia
 
 ## Algoritmit
 
-Harjoitustyössä käytetään kolmea eri algoritmia:
+Harjoituksessa toteutetaan neuroverkkoja geneettisen algoritmin kautta opettava järjestelmä.
 
-- Pelikentän analysoiva algoritmi, joka toimii seuraavasti:
-    1. Jokaista tasopalasta kohden muodostetaan solmu suunnistusverkkoon ja liikkumisverkkoon. Liikkumisverkkoon tallennetaan solmun koordinaatit.
-    2. Tarkistetaan jokaisen solmun kohdalla, muodostuuko siitä suora kaari johonkin toiseen solmuun. Kaikki solmut tarkistetaan jokaisen solmun kohdalla. Kaari muodostetaan, jos:
-    - tasopalaset ovat naapureita, eli muodostavat yhtenäisen tason. Kaaren tyyppi on "Juokse"
-    - tasopalasten välillä on portaikko. Kaaren tyyppi on "Kiipeä"
-    - toinen taso on toisen tason alapuolella siten, että sen päälle on mahdollista tiputtautua (tähän kovakoodataan jokin etäisyysarvo) Kaaren tyyppi on "Tiputtaudu"
-    - toinen taso on toisen tason kanssa samalla korkeudella siten, että tasolta toiselle voi hypätä (tähän kovakoodataan jokin etäisyysarvo) Kaaren tyyppi on "Hyppää"
-    3. Liikkumisverkon perusteella muodostetaan suunnistuverkon kaaret. Suunnistusverkon kaarilla ei ole mitään tyyppiä, mutta verkko on suunnattu.
+Harjoituksen sovelluksessa simuloidaan populaatiota virtuaalisia eläimiä, jotka liikkuvat simulaatiomaailmassa neuroverkkojensa ohjastamina. Neuroverkkojen syöteneuronit saavat tietoa eläimen ympäristöstä, ja ulostuloneuronit kontrolloivat eläimen liikkumista ja toimintaa. Syöteneuronit mittaavat eläimen lähiympäristöstä, mitä kaikkea siellä on ja millä etäisyydellä. Erilaisia vastaantulevia asioita ovat: toiset normaalit eläimet, toiset lisääntymiskykyiset eläimet sekä ruoka. Mahdollisesti simulaatioon voidaan lisätä myös lihansyöjiä, jotka syövät näitä eläimiä.  Ulostuloneuronit vastaavat seuraavista toiminnoista: liiku eteen, käänny vasemmalle, käänny oikealle, pysy paikallasi. Neuroverkkojen tarkka toteutus esimerkiksi sisempien tasojen (hidden layers) osalta tarkentunee kokeilemalla erilaisia vaihtoehtoja. Vanhemmat palaavat takaisin lisääntymiskyvyttömiksi, kunes ovat syöneet jälleen lisääntymiseen vaadittavan määrän ruokaa.
 
-- Hirviön reitinhaun toteuttava algoritmi. Tähän käytetään Dijkstran algoritmia tai A*-algoritmia.
+Eläinten neuroverkot kehittyvät pääsääntöisesti geneettisen algoritmin kautta. Mikäli eläin on saanut syötyä jonkin mielivaltaisen määrän ruokaa (esim 5 annosta), siitä tulee lisääntymiskelpoinen. Lisääntymiskelpoiset eläimet voivat lisääntyä keskenään liikkumalla toitensa päälle. Tällöin syntyy uusia eläimiä, joiden neuroverkot ovat geneettisen algoritmin mukaisesti yhdistelmä vanhempien neuroverkkoja, sekä joitain mutaatioita.
 
-- Hirviön liikkumisen mahdollistava algoritmi, joka toimii seuraavasti:
-    1. Tarkistetaan, ollaanko koordinaattien perusteella todella liikkumissolmun kuvaamalla tämänhetkisellä solmulla. Jos ei olla, ajetaan reitinhakualgoritmi uudestaan. Tämä ristiriita voi johtua esimerkiksi virheellisesti suoritetusta hypystä, tai, mikäli peliä kehitetään pidemmälle, esimerkiksi jostain pelaajan toiminnasta.
-    2. Otetaan suunnistusalgoritmista seuraava tavoitesolmu ja siihen johtava kaari. Otetaan talteen kaaren id sekä tavoitekaaren id.
-    3. Tarkistetaan id:tä vastaava kaaren tyyppi liikkumisverkosta, sekä haetaan tavoitesolmun id:n mukainen koordinaatti liikkumisverkosta.
-    4. Kaaren tyypin sekä tavoitesolmun koordinaatin perusteella muodostetaan liikkumisstrategia seuraavasti:
-    - mikäli tyyppi on "Juokse" , katsotaan onko tavoitesolmu sen koordinaatin perusteella oikealla vai vasemmalla puolella. Jos oikealla, niin liikutaan oikealle, kunnes saavutetaan tavoitesolmu, tai jos vasemmalla, niin liikutaan vasemmalle, kunnes saavutetaan tavoitesolmu.
-    - mikäli tyyppi on "Kiipeä", katsotaan onko tavoitesolmu sen koordinaatin perusteella ylä- vai alapuolella. Jos yläpuolella, niin kiivetään ylöspäin, kunnes tavoitetaan tavoitesolmu, ja jos alapuolella, niin kiivetään alaspäin, kunnes tavoitetaan tavoitesolmu.
-    - mikäli tyyppi on "Tiputtaudu", katsotaan tavoitesolmun etäisyys vaaka- ja pystysuunnassa ja suunnataan hyppy tämän perusteella.
-    - mkäli tyyppi on "Hyppää", katsotaan tavoitesolmun etäisyys vaakasuunnassa, ja muodostetaan hyppy tämän perusteella.
+Mikäli eläin on jonkin määritellyn ajan syömättä, se nälkiintyy ja kuolee. Eläimet voivat kuolla myös mahdollisten lihansyöjien saaliina. Eläimen ikä näkyy simulaatiossa muuttuvana värinä.
 
-    Hyppyjen suorittamiseen liittyvä logiikka suoritetaan yksinkertaisella laskutoimiuksella, jonka lopullinen sisältö muodostunee yrityksen ja erehdyksen kautta.
-
-
+Simulaation graafinen käyttöliittymä toteutetaan SDL-multimediakirjastolla.
 
 ## Ratkaistava ongelma
 
-Valmiina on yksinkertainen, Pygame-kirjastolla toteutettu tasohyppelypeli. Tasohyppelypelissä hirviöt seuraavat pelaajahahmoa yrittäen saada tämän kiinni. Sekä pelaaja että hirviöt voivat liikkua sivusuunnassa, hypätä sekä kiivetä portaita. Hirviöt eivät kuitenkaan osaa suunnitella reittiä pelaajan luokse.
-
-Tavoitteena on rakentaa ohjelma, joka pelin alkaessa analysoi pelikentän, ja rakentaa siitä suunnistusverkon (navigation mesh). Pelin edetessä hirviöiden ohjausalgoritmi soveltaa jokaisen hirviön kohdalla tietyin väliajoin esimerkiksi dijkstran algoritmia tai A*-algoritmia reitinhakuun suunnistusverkossa.
-
-Lisäksi muodostetaan liikkumisverkko, joka vastaa suunnistusverkkoa, ja joka kertoo hirviölle, miten jostain solmusta sen naapurisolmuun liikutaan (hyppy, juoksu, kiipeäminen)
+Simulaation avulla pyritään löytämään keino kouluttaa virtuaalieläinten neuroverkkoja pelkän simuloidun luonnonvalinnan kautta siten, että tuloksena on neuroverkkoja, joiden ohjastamina virtuaalieläimet kykenevät tekemään järkeviä päätöksiä liittyen ravinnon etsintään, lisääntymiseen sekä petojen välttelyyn.
 
 ## Syötteet ja niiden käyttö
 
-Syötteenä toimii suunnistusverkon muodostamisessa pelikenttä. Pelikenttä muodostetaan tekstitiedostosta, jossa välilyönnit tarkoittavat tyhjää tilaa, #-merkki seinää, P-merkki tasoa S-merkki porrasta, M-merkki hirviön aloituspaikkaa, H-merkki pelaajahahmon aloituspaikkaa, ja W-merkki pelikentän maalia, jonka saavuttamalla pelaaja voittaa pelin. Pelikentän generoiva järjestelmä on jo olemassa.
-
-Varsinaisessa reitinhaussa syötteenä toimii pelaajan liikkuminen. Tasopalanen, jonka päällä pelaaja on, kuvaa jotain suunnistusverkon solmua. Pelaajan liikkuessa pelaajan sijaintisolmu muuttuu siten, että pelaajan alla oleva solmu otetaan pelaajan sijaintisolmuksi. Jos pelaajahahmo on siis ilmassa, suoraan pelaajan alla oleva solmu on tämän sijaintisolmu riippumatta etäisyydestä. Sijaintisolmun vaihtuessa myös hirviöiden reitinhakualgoritmi ajetaan uudestaan. 
+Syötteinä neuroverkoilla toimii ympäristö, jossa niitä ohjastavat eläimet liikkuvat. 
 
 ## Aika- ja tilavaativuudet
 
-Pelikentän analysointi: 
-Aikavaativuus O(n^2) n = solmujen lukumäärä
-Tilavaativuus O(n^2) n = solmujen lukumäärä
+Tässä harjoitustyössä toteutettavat neuroverkot eivät lähtökohtaisesti käytä hyväkseen takaisinsyöttöä(backpropagation). Aikavaatimusta laskettaessa on siis oteettava huomioon ainoastaan syöttövaihe. Syöttövaiheen aikavaativuus on O(n*m*L), jossa n = syöteneuronien määrä, m = sisempien neuronien määrä per taso, ja L = sisempien neuronitasojen määrä.
 
-Reitinhaku:
-Aikavaativuus: O(n^2) (Dijkstra) n = solmujen lukumäärä
-Tilavaativuus: O(n^2) (Dijkstra) n = solmujen lukumäärä
-
-Liikkumisstrategian valinta:
-Aikavaativuus: O(1) 
-Tilavaativuus: O(1)
+Mikäli neuroverkkojen laskennassa ei käytetä hyväksi rinnakkaislaskentaa, on otettava huomiion myös populaation koko P, jolloin aikavaativuus on O(n*m*L*P). Tilavaativuus neuroverkoilla on niin ikään O(n*m*L) yhden neuroverkon osalta, ja O(n*m*L*P) koko populaation osalta.
 
 ## Harjoitustyön ydin
 
-Harjoitustyön ydin on erityisesti Pelikentän analysointi verkoksi sekä reitinhaku Dijkstran algoritmilla tai A*:lla. Tarvittaessa harjoitusyötä voi yksinkertaistaa esimerkiksi siten, että hyppiminen ei ole mahdollista hirviöille, ainoastaan tikkaiden kiipeäminen.
+Harjoitustyön ydin on neuroverkon toteuttaminen itse ilman valmiita kirjastoja, sekä geneettisen algoritmin soveltaminen neuroverkkojen oppimisprosessissa.
