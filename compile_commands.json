@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/paul/dev/sdl-testing/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/behavior.cpp.o -c /home/paul/dev/sdl-testing/src/behavior.cpp",
+  "file": "/home/paul/dev/sdl-testing/src/behavior.cpp"
+},
+{
+  "directory": "/home/paul/dev/sdl-testing/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/junk.cpp.o -c /home/paul/dev/sdl-testing/src/junk.cpp",
+  "file": "/home/paul/dev/sdl-testing/src/junk.cpp"
+},
+{
+  "directory": "/home/paul/dev/sdl-testing/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/main.cpp.o -c /home/paul/dev/sdl-testing/src/main.cpp",
+  "file": "/home/paul/dev/sdl-testing/src/main.cpp"
+},
+{
+  "directory": "/home/paul/dev/sdl-testing/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/thing.cpp.o -c /home/paul/dev/sdl-testing/src/thing.cpp",
+  "file": "/home/paul/dev/sdl-testing/src/thing.cpp"
+},
+{
+  "directory": "/home/paul/dev/sdl-testing/build",
+  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/window.cpp.o -c /home/paul/dev/sdl-testing/src/window.cpp",
+  "file": "/home/paul/dev/sdl-testing/src/window.cpp"
+}
+]
