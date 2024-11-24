@@ -3,7 +3,13 @@ project(SDL_Projekti)
 
 # Etsi SDL2-kirjasto
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} include/ /usr/local/include/bullet)
+include_directories(${SDL2_INCLUDE_DIRS}
+                    app/include
+                    render/include
+                    physics/include
+                    data/include
+                    /usr/local/include/bullet)
+
 link_directories(/usr/local/lib)
 
 # Etsi OpenMP-kirjasto
@@ -14,7 +20,11 @@ find_package(Bullet REQUIRED)
 
 
 # Etsi kaikki .cpp-tiedostot src-kansiosta
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES   "render/src/*.cpp"
+                    "physics/src/*.cpp
+                    "data/src/*.cpp
+                    "runtime/src/*cpp
+                    "app/src/*.cpp)
 
 # Luo suoritettava tiedosto
 add_executable(SDL_Projekti ${SOURCES})
