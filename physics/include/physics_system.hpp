@@ -19,14 +19,14 @@ namespace Physics{
     inline int FPS_LIMIT = DEFAULT_FPS;
 
 
-    inline std::vector<btRigidBody*> rigidBodies;
+    inline std::vector<btRigidBody*> g_rigidBodies;
 
 
-    inline btBroadphaseInterface* broadphase;
-    inline btCollisionConfiguration* collisionConfig;
-    inline btCollisionDispatcher* dispatcher;
-    inline btSequentialImpulseConstraintSolver* solver;
-    inline btDynamicsWorld* world = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfig);;
+    inline btBroadphaseInterface* g_broadphase;
+    inline btCollisionConfiguration* g_collisionConfig;
+    inline btCollisionDispatcher* g_dispatcher;
+    inline btSequentialImpulseConstraintSolver* g_solver;
+    inline btDiscreteDynamicsWorld* g_world = new btDiscreteDynamicsWorld(g_dispatcher, g_broadphase, g_solver, g_collisionConfig);;
 
 
 

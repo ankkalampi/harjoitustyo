@@ -3,13 +3,11 @@
 
 
 
-#include <map>
-#include <vector>
 
 
 #include "entity.hpp"
 
-namespace Data{
+namespace Systems{
 
 
     class Component {
@@ -21,12 +19,18 @@ namespace Data{
 
         Component(Entity* entity) : entity(entity){}
 
+        virtual Component generateComponent();
+
+        virtual void addComponent();
+
+        virtual void removeComponent();
+
         virtual ~Component() = default;
 
 
     };
 
-    inline std::map<Entity, std::vector<Component>> componentMap;
+
 
 
 

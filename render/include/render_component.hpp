@@ -3,22 +3,33 @@
 
 #include <SDL2/SDL_render.h>
 #include <vector>
-#include "../../data/include/component.hpp"
+#include "../../systems/include/component.hpp"
+#include "LinearMath/btTransform.h"
+
+
+
 
 
 namespace Render{
 
-    class RenderComponent : public Data::Component {
+    class RenderComponent : public Systems::Component {
         public:
         std::vector<SDL_Vertex> vertices;
         std::vector<int> triangleIndices;
+        btTransform* transform;
+        bool visible;
 
+
+
+        void addComponent(RenderComponent* renderComponent);
+
+        void removeComponent(int id);
+
+        ~RenderComponent();
     };
 
 
-    void addRenderComponent(RenderComponent* renderComponent);
 
-    void removeRenderComponent(int id);
 }
 
 

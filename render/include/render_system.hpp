@@ -5,6 +5,8 @@
 #include "BulletDynamics/Dynamics/btRigidBody.h"
 #include <SDL2/SDL_render.h>
 #include <vector>
+#include "../../systems/include/system.hpp"
+#include "render_component.hpp"
 
 namespace Render{
 
@@ -20,32 +22,36 @@ namespace Render{
     inline int SCREEN_HEIGHT = DEFAULT_SCREEN_HEIGHT;
 
 
-    extern SDL_Window* window;
-    extern SDL_Renderer* renderer;
-
-    inline std::vector<int> startIndices;
-    inline std::vector<int> numVertices;
-    inline std::vector<int> triangleIndices;
-    inline std::vector<SDL_Vertex> allVertices;
 
 
 
+    class RenderSystem : Systems::System {
+        public:
+
+        static bool initialized;
+
+        static SDL_Window* window;
+        static SDL_Renderer* renderer;
 
 
-    void init();
 
-    void updateRenderDataFromPhysics(
-                                        const std::vector<btRigidBody*>& rigidBodies,
-                                        std::vector<SDL_Vertex>& vertices,
-                                        const std::vector<int>& startIndices,
-                                        const std::vector<int>& numberVertices);
+        void init() override;
+
+        void updateData() override;
 
 
 
 
-    void update();
+        void execute() override;
 
-    void terminate();
+        void terminate() override;
+
+    };
+
+
+
+
+
 
 
 

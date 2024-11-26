@@ -3,7 +3,9 @@ project(SDL_Projekti)
 
 # Etsi SDL2-kirjasto
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS}
+include_directories(
+                    ${SDL2_INCLUDE_DIRS}
+                    libs
                     app/include
                     render/include
                     physics/include
@@ -21,10 +23,11 @@ find_package(Bullet REQUIRED)
 
 # Etsi kaikki .cpp-tiedostot src-kansiosta
 file(GLOB SOURCES   "render/src/*.cpp"
-                    "physics/src/*.cpp
-                    "data/src/*.cpp
-                    "runtime/src/*cpp
-                    "app/src/*.cpp)
+                    "physics/src/*.cpp"
+                    "data/src/*.cpp"
+                    "runtime/src/*cpp"
+                    "app/src/*.cpp"
+                    "systems/src/*.cpp")
 
 # Luo suoritettava tiedosto
 add_executable(SDL_Projekti ${SOURCES})

@@ -3,14 +3,12 @@
 
 
 #include "LinearMath/btTransform.h"
-#include <map>
 #include <string>
-#include <vector>
 
 
 
 
-namespace Data{
+namespace Systems{
 
     struct Entity {
         int id;

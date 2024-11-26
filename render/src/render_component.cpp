@@ -1,5 +1,6 @@
 #include "../include/render_component.hpp"
 #include "../include/render_system.hpp"
+#include "../include/render_group.hpp"
 
 
 namespace Render{
@@ -16,7 +17,7 @@ namespace Render{
         numVertices.push_back(renderComponent->vertices.size());
 
         // add this render component's vertices to the end of allVertices
-        allVertices.insert(renderComponent->vertices.end(), renderComponent->vertices.begin(), renderComponent->vertices.end());
+        allVertices.insert(allVerices.end(), renderComponent->vertices.begin(), renderComponent->vertices.end());
 
         // add triangulation information of this render component's vertices to triangleIndices
         for (int index : renderComponent->triangleIndices){
@@ -26,6 +27,7 @@ namespace Render{
 
 
     }
+
 
     void removeRenderComponent(int id);
 }

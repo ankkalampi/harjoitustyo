@@ -2,15 +2,16 @@
 #define PHYSICS_COMPONENT_HPP
 
 #include "BulletCollision/CollisionShapes/btCollisionShape.h"
-#include "BulletCollision/CollisionShapes/btConvexHullShape.h"
+
+#include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 #include "BulletDynamics/Dynamics/btRigidBody.h"
 #include "LinearMath/btScalar.h"
 #include "LinearMath/btVector3.h"
-#include "SDL_render.h"
-#include <vector>
 
-#include "../../data/include/entity.hpp"
-#include "../../data/include/component.hpp"
+
+#include "../../systems/include/entity.hpp"
+#include "../../systems/include/component.hpp"
+#include "../../render/include/render_component.hpp"
 
 namespace Physics{
 
@@ -20,26 +21,29 @@ namespace Physics{
         CIRCLE
     };
 
-    class PhysicsComponent : public Data::Component {
+    class PhysicsComponent : public Systems::Component {
         public:
         btRigidBody* rigidBody;
         btCollisionShape* shape;
 
         btScalar* mass;
         btVector3* localInertia;
+        btDiscreteDynamicsWorld* world;
 
         PhysicsComponent(
-                        Data::Entity* entity,
+                        Systems::Entity* entity,
                         btRigidBody* rigidBody,
                         btCollisionShape* shape,
                         btScalar* mass,
-                        btVector3* localInertia)
+                        btVector3* localInertia,
+                        btDiscreteDynamicsWorld* world)
                         :
-                        Data::Component(entity),
+                        Systems::Component(entity),
                         rigidBody(rigidBody),
                         shape(shape),
                         mass(mass),
-                        localInertia(localInertia){}
+                        localInertia(localInertia),
+                        world(world){}
 
         ~PhysicsComponent(){
             delete rigidBody;
@@ -52,7 +56,8 @@ namespace Physics{
 
     };
 
-    PhysicsComponent createPhysicsComponentFromVertices(std::vector<SDL_Vertex>* vertices, ColliderType type);
+    // create new physics component object from render component (later data)
+    PhysicsComponent* createPhysicsComponentFromRenderComponent(Render::RenderComponent& renderComponent);
 
 
     void addPhysicsComponent(PhysicsComponent* physicsComponent);
