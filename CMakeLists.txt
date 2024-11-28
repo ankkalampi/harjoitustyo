@@ -22,12 +22,7 @@ find_package(Bullet REQUIRED)
 
 
 # Etsi kaikki .cpp-tiedostot src-kansiosta
-file(GLOB SOURCES   "render/src/*.cpp"
-                    "physics/src/*.cpp"
-                    "data/src/*.cpp"
-                    "runtime/src/*cpp"
-                    "app/src/*.cpp"
-                    "systems/src/*.cpp")
+file(GLOB SOURCES   "app/main.cpp")
 
 # Luo suoritettava tiedosto
 add_executable(SDL_Projekti ${SOURCES})
