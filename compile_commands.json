@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/paul/dev/sdl-testing",
+  "command": "/usr/bin/clang++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/libs -I/home/paul/dev/sdl-testing/app/include -I/home/paul/dev/sdl-testing/render/include -I/home/paul/dev/sdl-testing/physics/include -I/home/paul/dev/sdl-testing/data/include -I/usr/local/include/bullet -isystem /usr/lib -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -fopenmp=libomp -std=gnu++20 -o CMakeFiles/SDL_Projekti.dir/app/main.cpp.o -c /home/paul/dev/sdl-testing/app/main.cpp",
+  "file": "/home/paul/dev/sdl-testing/app/main.cpp"
+}
+]

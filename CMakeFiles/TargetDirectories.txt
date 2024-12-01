@@ -1,0 +1,3 @@
+/home/paul/dev/sdl-testing/CMakeFiles/SDL_Projekti.dir
+/home/paul/dev/sdl-testing/CMakeFiles/edit_cache.dir
+/home/paul/dev/sdl-testing/CMakeFiles/rebuild_cache.dir
