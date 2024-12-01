@@ -1,0 +1,5 @@
+{
+    "type": "box_render",
+    "mesh": "box.obj",
+    "texture": "box.mtl"
+}

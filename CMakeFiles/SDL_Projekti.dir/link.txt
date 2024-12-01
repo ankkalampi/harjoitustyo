@@ -1,0 +1,1 @@
+/usr/bin/clang++ -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 CMakeFiles/SDL_Projekti.dir/app/main.cpp.o -o SDL_Projekti   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -L/usr/lib/x86_64-linux-gnu  -lSDL2 -lBulletDynamics -lBulletCollision -lLinearMath /usr/lib/llvm-14/lib/libomp.so /usr/lib/x86_64-linux-gnu/libpthread.a 

@@ -1,0 +1,6 @@
+{
+    "type": "convex_hull",
+    "mass": 1.0,
+    "local_inertia":[0,0,0]
+
+}

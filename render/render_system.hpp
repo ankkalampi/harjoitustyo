@@ -1,12 +1,13 @@
-#ifndef RENDER_SYSTEM_HPP
-#define RENDER_SYSTEM_HPP
+#pragma once
 
 
 #include "BulletDynamics/Dynamics/btRigidBody.h"
 #include <SDL2/SDL_render.h>
 #include <vector>
-#include "../../systems/system.hpp"
+#include "../systems/system.hpp"
 #include "render_component.hpp"
+#include "render_group.hpp"
+#include "render_utils.hpp"
 
 namespace Render{
 
@@ -33,20 +34,10 @@ namespace Render{
         static SDL_Window* window;
         static SDL_Renderer* renderer;
 
+        
 
 
-        void init() override;
-
-        void update() override;
-
-
-
-
-        void execute() override;
-
-        void terminate() override;
-
-        void init(){
+        void init() override{
 
         if(!RenderSystem::initialized){
 
@@ -55,13 +46,15 @@ namespace Render{
             RenderSystem::window = makeWindow();
             RenderSystem::renderer = makeRenderer(RenderSystem::window);
 
+
+
         }
 
 
 
     }
 
-    void update()
+    void update() override
         {
 
             RenderGroup::update();
@@ -70,7 +63,7 @@ namespace Render{
 
 
 
-    void execute(){
+    void execute() override{
 
         SDL_SetRenderDrawColor(RenderSystem::renderer, 0, 0, 0, 255);
 
@@ -90,7 +83,7 @@ namespace Render{
 
     }
 
-    void terminate(){
+    void terminate() override{
 
     }
 
@@ -108,5 +101,3 @@ namespace Render{
 
 }
 
-
-#endif

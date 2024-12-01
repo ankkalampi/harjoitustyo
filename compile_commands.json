@@ -1,27 +1,7 @@
 [
 {
-  "directory": "/home/paul/dev/sdl-testing/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/behavior.cpp.o -c /home/paul/dev/sdl-testing/src/behavior.cpp",
-  "file": "/home/paul/dev/sdl-testing/src/behavior.cpp"
-},
-{
-  "directory": "/home/paul/dev/sdl-testing/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/junk.cpp.o -c /home/paul/dev/sdl-testing/src/junk.cpp",
-  "file": "/home/paul/dev/sdl-testing/src/junk.cpp"
-},
-{
-  "directory": "/home/paul/dev/sdl-testing/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/main.cpp.o -c /home/paul/dev/sdl-testing/src/main.cpp",
-  "file": "/home/paul/dev/sdl-testing/src/main.cpp"
-},
-{
-  "directory": "/home/paul/dev/sdl-testing/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/thing.cpp.o -c /home/paul/dev/sdl-testing/src/thing.cpp",
-  "file": "/home/paul/dev/sdl-testing/src/thing.cpp"
-},
-{
-  "directory": "/home/paul/dev/sdl-testing/build",
-  "command": "/usr/bin/c++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/include -I/usr/local/include/bullet -isystem /usr/lib -fopenmp -o CMakeFiles/SDL_Projekti.dir/src/window.cpp.o -c /home/paul/dev/sdl-testing/src/window.cpp",
-  "file": "/home/paul/dev/sdl-testing/src/window.cpp"
+  "directory": "/home/paul/dev/sdl-testing",
+  "command": "/usr/bin/clang++  -I/usr/include/SDL2 -I/home/paul/dev/sdl-testing/libs -I/home/paul/dev/sdl-testing/app/include -I/home/paul/dev/sdl-testing/render/include -I/home/paul/dev/sdl-testing/physics/include -I/home/paul/dev/sdl-testing/data/include -I/usr/local/include/bullet -isystem /usr/lib -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -fopenmp=libomp -std=gnu++20 -o CMakeFiles/SDL_Projekti.dir/app/main.cpp.o -c /home/paul/dev/sdl-testing/app/main.cpp",
+  "file": "/home/paul/dev/sdl-testing/app/main.cpp"
 }
 ]

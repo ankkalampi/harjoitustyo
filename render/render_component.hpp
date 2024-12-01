@@ -1,9 +1,8 @@
-#ifndef RENDER_COMPONENT_HPP
-#define RENDER_COMPONENT_HPP
+#pragma once
 
 #include <SDL2/SDL_render.h>
 #include <vector>
-#include "../../systems/component.hpp"
+#include "../systems/component.hpp"
 #include "LinearMath/btTransform.h"
 
 
@@ -12,12 +11,14 @@
 
 namespace Render{
 
-    class RenderComponent : public Systems::Component {
+    class RenderComponent : public Systems::ComponentTemplate<RenderComponent> {
         public:
         std::vector<SDL_Vertex> vertices;
-        std::vector<int> triangleIndices;
+        std::vector<int> triangles;
         btTransform* transform;
-        bool visible;
+        int id;
+
+        
 
 
 
@@ -58,5 +59,3 @@ namespace Render{
 
 }
 
-
-#endif

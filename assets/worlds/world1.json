@@ -1,0 +1,13 @@
+[
+    {
+        "name":"box1",
+        "concept": "box_concept",
+        "location": [120,200]
+    },
+
+    {
+        "name":"box2",
+        "concept": "box_concept",
+        "location":[200, 500]
+    }
+]

@@ -1,6 +1,0 @@
-{
-    "type": "box",
-    "renderComponent": "box_render.json" ,
-    "physicsComponent": "box_physics.json"
-
-}

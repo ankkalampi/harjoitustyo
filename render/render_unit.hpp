@@ -1,10 +1,11 @@
-#ifndef RENDER_UNIT_HPP
-#define RENDER_UNIT_HPP
+#pragma once
 
 #include "SDL_render.h"
 #include "render_component.hpp"
 #include "render_data.hpp"
+#include "render_system.hpp"
 #include <vector>
+
 namespace Render{
 
     /*
@@ -23,6 +24,9 @@ namespace Render{
 
         std::vector<RenderComponent*> renderComponents; // rendercomponents of this render unit
 
+        std::vector<btTransform*> visibleInstances;
+        std::vector<btTransform*> invisibleInstances;
+
 
         int meshSizeTriangle;                           // number of triangles in this render unit
 
@@ -30,65 +34,50 @@ namespace Render{
 
         int id;                                         // id numner for this render unit
 
-        RenderUnit(int meshSizeVertex, int meshSizeTriangle, int id);
-
-        // add mesh to render unit
-        void add(RenderData* renderData);
-
-        // remove component from render unit and manage vertex vector
-        void remove(int componentIndex);
-
-
-        // update render unit based of transforms
-        void update();
+        
 
 
 
-        // generate render call
-        void execute();
+       
 
-        RenderUnit::RenderUnit(
-                            int meshSizeVertex,
-                            int meshSizeTriangle,
-                            int id) :
+        RenderUnit(
+                            RenderComponent* renderComponent) :
 
-                            id(id),
-                            meshSizeVertex(meshSizeVertex),
-                            meshSizeTriangle(meshSizeTriangle),
+                            id(renderComponent->id),
+                            meshSizeVertex(renderComponent->vertices.size()),
+                            meshSizeTriangle(renderComponent->triangles.size()),
 
                             vertices(std::vector<SDL_Vertex>()),
-                            triangles(std::vector<int>()),
-
-                            renderComponents(std::vector<RenderComponent*>()){}
+                            triangles(std::vector<int>()){}
 
 
 
 
 
     // add mesh to render unit
-    void RenderUnit::add(RenderData* renderData){
+    void add(RenderComponent* renderComponent){
 
             // add vertices
             this->vertices.insert(
                                     this->vertices.end(),
-                                    renderData->vertices.begin(),
-                                    renderData->vertices.end());
+                                    renderComponent->vertices.begin(),
+                                    renderComponent->vertices.end());
 
             // add triangles
             this->triangles.insert(
                                     this->triangles.end(),
-                                    renderData->triangles.begin(),
-                                    renderData->triangles.end());
+                                    renderComponent->triangles.begin(),
+                                    renderComponent->triangles.end());
 
             // add rendercomponent
-            this->renderComponents.push_back(renderData->renderComponent);
+            this->visibleInstances.push_back(renderComponent->transform);
 
     }
 
     // remove component from render unit and manage vertex vector
     // copies last item on each vector to replace the removed item(s)
     // and updates RenderGroup::groupMap
-    void RenderUnit::remove(int componentIndex){
+    void remove(int componentIndex){
 
         // calculate start index of vertices to be removed
         int removableVertexIndex = componentIndex * this->meshSizeVertex;
@@ -124,9 +113,13 @@ namespace Render{
 
     }
 
+    void makeInvisible(btTransform* instance){
+
+    }
+
 
     // update render unit based of transforms
-    void RenderUnit::update(){
+    void update(){
 
         // go through every render component
         for (int componentIndex = 0; componentIndex < this->renderComponents.size(); ++componentIndex){
@@ -141,7 +134,7 @@ namespace Render{
             int count = this->meshSizeVertex;
 
             // check if render component is set to visible
-            bool visible = this->renderComponents[componentIndex]->visible;
+            //bool visible = this->renderComponents[componentIndex]->visible;
 
             // update all vertices affiliated with entity
             for (int i = 0; i < count; ++i) {
@@ -156,7 +149,7 @@ namespace Render{
                 vertex.position.y = worldVertex.getY();
 
                 // turn vertices invisible or visible based on render component
-                if (visible) vertex.color.a = 1.0f; else vertex.color.a = 0.0f;
+                //if (visible) vertex.color.a = 1.0f; else vertex.color.a = 0.0f;
 
             }
 
@@ -169,7 +162,7 @@ namespace Render{
 
 
     // generate render call
-    void RenderUnit::execute(){
+    void execute(){
         SDL_RenderGeometry(
                             RenderSystem::renderer,
                             NULL,
@@ -190,4 +183,3 @@ namespace Render{
 
 
 
-#endif

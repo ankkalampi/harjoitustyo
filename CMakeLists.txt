@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(SDL_Projekti)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Etsi SDL2-kirjasto
 find_package(SDL2 REQUIRED)
 include_directories(
@@ -38,3 +41,5 @@ target_link_libraries(SDL_Projekti glm::glm)
 
 #linkitä bullet-kirjasto projektiin
 target_link_libraries(SDL_Projekti BulletDynamics BulletCollision LinearMath)
+
+

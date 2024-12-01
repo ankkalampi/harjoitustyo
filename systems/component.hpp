@@ -5,29 +5,23 @@
 
 
 
-#include "entity.hpp"
-
+#include <string>
 namespace Systems{
 
 
     class Component {
-
         public:
 
+        
+    };
 
-        Entity* entity;
+    template <typename Derived>
+    class ComponentTemplate : public Component{
+        public:
 
-        Component(Entity* entity) : entity(entity){}
+        static Derived* loadComponent(std::string component){
 
-        virtual Component generateComponent();
-
-        virtual void addComponent();
-
-        virtual void removeComponent();
-
-        virtual ~Component() = default;
-
-
+        }
     };
 
 

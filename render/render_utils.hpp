@@ -1,12 +1,16 @@
-#ifndef RENDER_UTILS_HPP
-#define RENDER_UTILS_HPP
+#pragma once
 
 
+#include "render_system.hpp"
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_quit.h>
+#include <stdexcept>
+#include <SDL2/SDL.h>
 
 namespace Render{
 
-    SDL_Window* makeWindow(){
+
+    inline SDL_Window* makeWindow(){
         if (SDL_Init(SDL_INIT_VIDEO) < 0) {
             throw std::runtime_error("SDL:n alustaminen epäonnistui: " + std::string(SDL_GetError()));
         }
@@ -26,7 +30,7 @@ namespace Render{
         return window;
     }
 
-    SDL_Renderer* makeRenderer(SDL_Window* window){
+    inline SDL_Renderer* makeRenderer(SDL_Window* window){
         // luodaan renderöijä ikkunalle
         SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         if (!renderer) {
@@ -44,4 +48,3 @@ namespace Render{
 
 
 
-#endif
